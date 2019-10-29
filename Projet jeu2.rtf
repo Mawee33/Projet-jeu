@@ -1,0 +1,122 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\froman\fcharset0 Times-Roman;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red0\green0\blue233;\red0\green0\blue0;
+\red0\green0\blue0;\red70\green137\blue204;\red202\green202\blue202;\red140\green211\blue254;\red194\green126\blue101;
+}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\cssrgb\c0\c0\c93333;\cssrgb\c0\c0\c0;
+\csgray\c0\c0;\cssrgb\c33725\c61176\c83922;\cssrgb\c83137\c83137\c83137;\cssrgb\c61176\c86275\c99608;\cssrgb\c80784\c56863\c47059;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15220\viewh9860\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 \ul \ulc0 Projet jeu : 
+\f1\b0 \ulnone \
+\
+
+\f0\b Jeu
+\f1\b0  : Recettes de cuisine (nom \'e0 trouver)\
+\
+
+\f0\b Objectif
+\f1\b0  : L\'92objectif est de deviner les ingr\'e9dients qui se trouvent dans une recette de cuisine donn\'e9e. \
+\
+
+\f0\b Description
+\f1\b0  : \
+Des plats sont pr\'e9sent\'e9s les uns apr\'e8s les autres avec une liste de vignettes repr\'e9sentant des ingr\'e9dients (pr\'e9sents et non pr\'e9sents dans la recette du plat pr\'e9sent\'e9). \
+Ex : pancakes / Liste d\'92ingr\'e9dients : \cf2 oeufs\cf0 , \cf2 sucre\cf0 , amandes, beurre, \cf2 levure\cf0 , caf\'e9, huile (en rouge les bons ingr\'e9dients)\
+Le joueur s\'e9lectionne les vignettes des ingr\'e9dients qu\'92il pense \'eatre pr\'e9sents dans la recette et valide ses choix. \
+Si il a s\'e9lectionn\'e9 tous les ingr\'e9dients pr\'e9sents dans la recette et uniquement les \'e9l\'e9ments pr\'e9sents dans la recette le tour est remport\'e9 et il passe au plat suivant. \
+Si il a s\'e9lectionn\'e9 des ingr\'e9dients non pr\'e9sents dans la recette il est alors indiqu\'e9 que des ingr\'e9dients sont de trop. \
+Si il n\'92a pas s\'e9lectionn\'e9 tous les ingr\'e9dients pr\'e9sents dans la recette il est indiqu\'e9 que des ingr\'e9dients sont manquants. \
+
+\f0\b Bonus
+\f1\b0  :\
+- Ajouter des cat\'e9gories de recettes (p\'e2tisseries, plats par nationalit\'e9, sauces\'85)\
+- Ajouter des niveaux en fonction de la complexit\'e9 des recettes\
+- Ajouter la recette quand la partie est termin\'e9e\
+\
+
+\f0\b Etapes de r\'e9alisation : \
+
+\f1\b0 - Cr\'e9ation de 3 fichiers js, html, css\
+- cr\'e9ation de recette avec liste d\'92ingr\'e9dients :\
+* tarte aux pommes : farine / beurre / sel / sucre / pommes / cannelle (recette : {\field{\*\fldinst{HYPERLINK "https://lacuisinedannie.20minutes.fr/recette-tarte-aux-pommes-classique-318.html"}}{\fldrslt 
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 https://lacuisinedannie.20minutes.fr/recette-tarte-aux-pommes-classique-318.html}}
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 )\
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 * mousse au chocolat : chocolat noir / oeufs / sucre / cr\'e8me fraiche liquide / gousse de vanille (recette : {\field{\*\fldinst{HYPERLINK "https://cuisine.journaldesfemmes.fr/recette/306049-mousse-au-chocolat"}}{\fldrslt 
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 https://cuisine.journaldesfemmes.fr/recette/306049-mousse-au-chocolat}}
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 )\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 * meringues : blancs d\'92oeufs / sucre semoule (recette :  {\field{\*\fldinst{HYPERLINK "https://www.marmiton.org/recettes/recette_meringue-pour-les-nuls_36610.aspx"}}{\fldrslt 
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 https://www.marmiton.org/recettes/recette_meringue-pour-les-nuls_36610.aspx}}
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 )\
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 * flan : lait / oeufs / sucre / ma\'efzena / sucre vanill\'e9 / gousse de vanille (recette : {\field{\*\fldinst{HYPERLINK "https://cuisine.journaldesfemmes.fr/recette/1002906-flan-patissier-sans-pate"}}{\fldrslt 
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 https://cuisine.journaldesfemmes.fr/recette/1002906-flan-patissier-sans-pate}}
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 )\
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 * cr\'eapes : farine / oeufs / lait / rhum / sucre vanill\'e9 / sucre / sel / beurre (recette : {\field{\*\fldinst{HYPERLINK "https://www.hervecuisine.com/recette/crepes-de-la-chandeleur/"}}{\fldrslt 
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 https://www.hervecuisine.com/recette/crepes-de-la-chandeleur/}}
+\f2 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 )\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 \'85\
+- cr\'e9ation d\'92une liste d\'92ingr\'e9dients \'ab\'a0random\'a0\'bb qui va contenir l\'92ensemble des ingr\'e9dients des recettes ainsi que d\'92autres. \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f3 \cf4 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 var\strokec7 \'a0\strokec8 randomIngredients\strokec7 \'a0=\'a0[\
+\'a0\'a0\'a0\'a0\strokec9 "almonds"\strokec7 ,\
+\'a0\'a0\'a0\strokec9 "almonds\'a0powder"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "anise"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "apples"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "baking\'a0powder"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "butter"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "caster\'a0sugar"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "chocolate\'a0chips"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "chocolate\'a0powder"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "cinnamon"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "cornstarch"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "cottage\'a0cheese"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "dark\'a0chocolate"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "eggs"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "eggs\'a0white"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "eggs\'a0yolk"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "flour"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "fresh\'a0liquid\'a0cream"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "gelatin"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "ginger"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "hazelnut"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "hazelnut\'a0powder"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "honey"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "lemon"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "milk"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "nuts"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "oatmeal"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "peanut\'a0oil"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "peanut\'a0butter"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "pistacchio"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "raisin"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "rhum"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "salt"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "sesame"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "sugar"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "sunflower\'a0oil"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "vanilla\'a0pod"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "vanilla\'a0sugar"\strokec7 ,\
+\'a0\'a0\'a0\'a0\strokec9 "yoghurt"\strokec7 ];\cb1 \
+}
