@@ -245,7 +245,14 @@ function displayResult(plate) {
 function displayFinal(plate) {
   const resultsDOM2 = document.querySelector(".scenes");
   resultsDOM2.innerHTML = "";
-  resultsDOM2.innerHTML += `<h2>Your result final : ${numberOfPoints(plate)}/5</h2>`;
+  resultsDOM2.innerHTML += `<h2 class="final">Your final result : ${numberOfPoints(plate)}/5</h2><div class="gifFinal"></div>
+  <ul class="recipes">If you're hungry now, here's the recipes :
+  <li><a href="https://lacuisinedannie.20minutes.fr/recette-tarte-aux-pommes-classique-318.html">Apple Pie</a></li>
+  <li><a href="https://cuisine.journaldesfemmes.fr/recette/306049-mousse-au-chocolat">Chocolate Mousse</a></li>
+  <li><a href="https://www.marmiton.org/recettes/recette_meringue-pour-les-nuls_36610.aspx">Meringue</a></li>
+  <li><a href="https://cuisine.journaldesfemmes.fr/recette/1002906-flan-patissier-sans-pate">Flan</a></li>
+  <li><a href="https://www.hervecuisine.com/recette/crepes-de-la-chandeleur/">Crepes</a></li>
+  </ul>`;
   };
 
 
