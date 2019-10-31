@@ -136,8 +136,9 @@ let level = 0;
 let button2 = {};
 
 function levels() {
-  if (level >= plates.length) {
-    return false; // les points seront alors insérés
+  if (level === plates.length) {
+  
+    return  alert("end game"); // les points seront alors insérés
   } else {
   displayPlate(plates[level]);
   displayTable(plates[level].ingredients);
@@ -146,6 +147,7 @@ function levels() {
 }}
 
 function displayPlate(plate) {
+  console.log("displayPlate");
   const game = document.querySelector(".scenes");
   game.innerHTML = "";
   game.innerHTML += `<div><h2>${plate.title}</h2><div><img class="plate" src="${plate.picture}" /></div><div id="ingr">
@@ -158,12 +160,14 @@ function displayPlate(plate) {
 </div>`;
   const btn2 = document.querySelector(".button2");
   btn2.onclick = function() {
-    levels();
+    //levels();
     displayResult(plates[level].response);
   };
 }
 
+
 function displayTable(ingredientsArray) {
+  console.log("displayTable");
   const listIngredients = document.querySelector("#ingr .list");
   listIngredients.innerHTML = "";
   ingredientsArray.forEach(ingredient => {
@@ -171,7 +175,12 @@ function displayTable(ingredientsArray) {
   });
 }
 
+document.querySelector(".button1").onclick = function() {
+  levels();
+};
+
 function setIngredientsListener() {
+  console.log("setIngredients");
   document.querySelectorAll(".ingredient").forEach(ingredient => {
     ingredient.onclick = function(e) {
       e.target.classList.toggle("active");
@@ -180,26 +189,24 @@ function setIngredientsListener() {
   });
 }
 
-// function setListenerButton1(){
 
-// }
-document.querySelector(".button1").onclick = function() {
-  levels();
-};
+function checkAnswer(responses) {
+  console.log("checkAnswer");
 
-function checkAnswer(plate) {
   let errors = 0;
   let activeIngredients = document.querySelectorAll(".ingredient.active");
 
   activeIngredients.forEach(answer => {
-    if (!plate.includes(answer.getAttribute("alt"))) {
+    if (!responses.includes(answer.getAttribute("alt"))) {
       errors += 1
-      // console.log(answer.getAttribute("alt"));
+      console.log(answer.getAttribute("alt"));
     }
   });
+  console.log("level", level);
+
   level += 1;
-  console.log(level);
-  if (errors === 0) {
+  // return console.log("hey", plate)
+  if (errors === 0 && responses.length ===  activeIngredients.length) {
     return "Yay, What a Chef!";
   } else {
     return "Oh no, you have to keep cooking!";
@@ -212,13 +219,9 @@ function displayResult(plate) {
   resultsDOM.innerHTML += `<h4 class="result">${checkAnswer(plate)}</h4>`;
 
   setTimeout(() =>{
+    
   const resultsDOM = document.getElementById("results");
-  resultsDOM.innerHTML += `<h4 class="result">${checkAnswer(plate)}</h4>`;
   resultsDOM.innerHTML = "";
+  levels();
   } ,3000)
 }
-
-// document.querySelector(".button1").onclick = function() {
-//     console.log("clicked  ")
-//   displayResult(plates[level].response)
-//  };
