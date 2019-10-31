@@ -134,11 +134,11 @@ var plates = [
 ];
 let level = 0;
 let button2 = {};
+let points = 0;
 
 function levels() {
   if (level === plates.length) {
-  
-    return  alert("end game"); // les points seront alors insérés
+    return  displayFinal(plates);
   } else {
   displayPlate(plates[level]);
   displayTable(plates[level].ingredients);
@@ -192,10 +192,8 @@ function setIngredientsListener() {
 
 function checkAnswer(responses) {
   console.log("checkAnswer");
-
   let errors = 0;
   let activeIngredients = document.querySelectorAll(".ingredient.active");
-
   activeIngredients.forEach(answer => {
     if (!responses.includes(answer.getAttribute("alt"))) {
       errors += 1
@@ -203,9 +201,7 @@ function checkAnswer(responses) {
     }
   });
   console.log("level", level);
-
   level += 1;
-  // return console.log("hey", plate)
   if (errors === 0 && responses.length ===  activeIngredients.length) {
     return "Yay, What a Chef!";
   } else {
@@ -213,15 +209,46 @@ function checkAnswer(responses) {
   }
 }
 
+
+function numberOfPoints(responses) {
+  let errors = 0;
+  let activeIngredients = document.querySelectorAll(".ingredient.active");
+  activeIngredients.forEach(answer => {
+    if (!responses.includes(answer.getAttribute("alt"))) {
+      errors += 1
+      console.log(answer.getAttribute("alt"));
+      console.log("err", errors)
+    }
+  });
+  console.log("level", level);
+  if (errors === 0 && responses.length ===  activeIngredients.length) {
+    points ++;
+  } else {
+     points;
+  }
+  return points
+}
+
+
 function displayResult(plate) {
   const resultsDOM = document.getElementById("results");
   resultsDOM.innerHTML = "";
-  resultsDOM.innerHTML += `<h4 class="result">${checkAnswer(plate)}</h4>`;
+  resultsDOM.innerHTML += `<h4 class="result">${checkAnswer(plate)} You have ${numberOfPoints(plate)} points.</h4>`;
 
   setTimeout(() =>{
-    
-  const resultsDOM = document.getElementById("results");
+ const resultsDOM = document.getElementById("results");
   resultsDOM.innerHTML = "";
   levels();
-  } ,3000)
+  } ,2000)
 }
+
+function displayFinal(plate) {
+  const resultsDOM2 = document.querySelector(".scenes");
+  resultsDOM2.innerHTML = "";
+  resultsDOM2.innerHTML += `<h2>Your result final : ${numberOfPoints(plate)}/5</h2>`;
+  };
+
+
+document.querySelector(".button2").onclick = function() {
+  displayFinal(plate);
+};
