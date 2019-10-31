@@ -1,7 +1,7 @@
-var plates = ["Apple Pie", "Chocolate Mousse", "Meringue"];
-
-var applePieIngredients = {
-  ingredients: [
+var plates = [
+   {title: "Apple Pie", 
+   picture: "./images/apple-pie.jpg",
+   ingredients: [
     { name: "sunflower oil", image: "./images/huile-tournesol.jpg" },
     { name: "flour", image: "./images/farine.jpg" },
     { name: "butter", image: "./images/beurre.jpg" },
@@ -18,11 +18,10 @@ var applePieIngredients = {
     { name: "gelatin", image: "./images/gélatine.jpg" },
     { name: "hazelnut powder", image: "./images/poudre-noisettes.jpg" }
   ],
-  response: [1, 2, 6, 7, 10, 12]
-};
-
-var chocolateMousseIngredients = {
-  ingredients: [
+  response: ["flour", "butter", "salt", "sugar", "apples", "cinnamon"]
+}, 
+   {title: "Chocolate Mousse", picture: "./images/chocolate-mousse.jpg",
+   ingredients: [
     { name: "hazelnut", image: "./images/noisettes.jpg" },
     { name: "dark chocolate", image: "./images/chocolat-noir.jpg" },
     { name: "butter", image: "./images/beurre.jpg" },
@@ -39,11 +38,16 @@ var chocolateMousseIngredients = {
     { name: "vanilla pod", image: "./images/gousse-vanille.jpg" },
     { name: "cottage cheese", image: "./images/fromage-blanc.jpg" }
   ],
-  response: [1, 5, 6, 9, 13]
-};
-
-var meringueIngredients = {
-  ingredients: [
+  response: [
+    "dark chocolate",
+    "eggs",
+    "sugar",
+    "fresh liquid cream",
+    "vanilla pod"
+  ]
+  }, 
+   {title: "Meringue", picture: "./images/meringue.jpg",
+   ingredients: [
     { name: "vanilla pod", image: "./images/gousse-vanille.jpg" },
     { name: "fresh liquid cream", image: "./images/crème-liquide.jpg" },
     { name: "flour", image: "./images/farine.jpg" },
@@ -60,11 +64,10 @@ var meringueIngredients = {
     { name: "cottage cheese", image: "./images/fromage-blanc.jpg" },
     { name: "eggs yolk", image: "./images/jaune-oeuf.jpg" }
   ],
-  response: [8, 12]
-};
-
-var flanIngredients = {
-  ingredients: [
+  response: ["eggs white", "caster sugar"]
+  }, 
+   {title: "Flan", picture: "./images/flan.jpg",
+   ingredients: [
     { name: "flour", image: "./images/farine.jpg" },
     { name: "milk", image: "./images/lait.jpg" },
     { name: "eggs", image: "./images/oeufs.jpg" },
@@ -81,11 +84,10 @@ var flanIngredients = {
     { name: "fresh liquid cream", image: "./images/crème-liquide.jpg" },
     { name: "vanilla pod", image: "./images/gousse-vanille.jpg" }
   ],
-  response: [1, 2, 4, 8, 11, 15]
-};
-
-var crepesIngredients = {
-  ingredients: [
+  response: ["milk", "eggs", "sugar", "cornstarch", "vanilla sugar", "vanilla pod"]
+  }, 
+   {title: "Crepes", picture: "./images/crepes.jpg",
+   ingredients: [
     { name: "flour", image: "./images/farine.jpg" },
     { name: "eggs", image: "./images/oeufs.jpg" },
     { name: "fresh liquid cream", image: "./images/crème-liquide.jpg" },
@@ -102,13 +104,99 @@ var crepesIngredients = {
     { name: "butter", image: "./images/beurre.jpg" },
     { name: "cornstarch", image: "./images/fécule-maïs.jpg" }
   ],
-  response: [0, 1, 3, 7, 9, 10, 11, 14]
-};
+  response: ["flour", "eggs", "milk", "rhum", "vanilla sugar", "sugar", "salt", "butter"]
+  }
+];
+let level = 0;
+let button2 = {};
 
 function displayPlate(plate) {
-  const h3 = document.querySelector("#plat h3");
-  h3.innerHTML = "";
-  h3.innerHTML += `<h3>${plate}</h3>`;
+  const game = document.querySelector(".scenes");
+  game.innerHTML = "";
+  game.innerHTML += `<div><h3>${plate.title}</h3><div><img class="plate" src="${plate.picture}" /></div><div id="ingr">
+  <h3>Pick the good ingredients</h3>
+  <ul  class="list">
+  </ul>
+  <button class="button2">SUBMIT</button>
+ <h4 class="result"></h4>
+ </div>
+ </div>`;
+ const btn2 =  document.querySelector(".button2");
+  btn2.onclick = function(){
+    if(level === 0){
+      console.log("level")
+      levels()
+      }
+      else{
+        displayResult(plates[level].response)
+      levels()
+      }
+  }
+}   
+
+function displayTable(ingredientsArray) {
+  const listIngredients = document.querySelector("#ingr .list");
+  listIngredients.innerHTML = "";
+  ingredientsArray.forEach(ingredient => {
+    listIngredients.innerHTML += `<li><div class="row">${ingredient.name}</div> <img class="ingredient" src="${ingredient.image}"  alt="${ingredient.name}" /></li>`;
+  });
 }
 
-displayPlate(plates[0]);
+function setIngredientsListener(){
+  document.querySelectorAll(".ingredient").forEach(ingredient => {
+    ingredient.onclick = function(e) {
+      e.target.classList.toggle("active");
+      console.log(document.querySelectorAll(".ingredient.active"))
+    };
+  });
+}
+
+function levels() {
+if(level >= plates.length) {
+return "stop"; // les points seront alors insérés
+}
+displayPlate(plates[level]);
+displayTable(plates[level].ingredients);
+setIngredientsListener();
+level +=1;
+}
+
+
+
+// function setListenerButton1(){
+
+// }
+document.querySelector(".button1").onclick = function(){
+  levels();
+}
+
+
+
+function checkAnswer(plate){
+  let badAnswer = false;
+  let activeIngredients = document.querySelectorAll(".ingredient.active")
+ activeIngredients.forEach(answer =>{
+    if(!plate.includes(answer.getAttribute("alt")))  {
+      badAnswer = true;
+    return
+  }
+});
+  if(!badAnswer)  {
+    return "Yay, What a Chef!";
+} else {
+    return "Oh no, you have to keep cooking!";
+}}
+
+
+function displayResult(plate) {
+  const resultsDOM = document.getElementById("results");
+  resultsDOM.innerHTML = "";
+  resultsDOM.innerHTML += `<h4 class="result">${checkAnswer(plate)}</h4>`;
+  };
+
+// document.querySelector(".button1").onclick = function() {
+//     console.log("clicked  ")
+//   displayResult(plates[level].response)
+//  };
+
+

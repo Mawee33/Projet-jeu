@@ -5,28 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recettes</title>
-    <link rel="module" href="/recettes.js">
-    <link rel="stylesheet" href="/recettes.css">
+    <link rel="stylesheet" href="./recettes.css">
+    <script type="module" src="./recettes.js"></script>
 </head>
 
 <body>
- <header>Cooking Lab</header>
+ <!-- <section class="header">
+     <div><header>Cooking Lab</header></div>
+    </section>
 
- <h1>Test your cooking knowledge</h1>
+ <section class="cooking">
+     <h1>Test your cooking knowledge</h1>
+    <img class = "snoopy" src=".//images/snoopy.webp" alt="snoopy">
+    </section>
 
- <h2>For each plate select all the ingredients needed</h2>
+ <h2>For each plate select all the ingredients needed!</h2>
 
- <div id="plat">
-    <h3>contenu</h3>
- </div>
+ <div class="scene">
+        <div id="plat">
+                <h3></h3>
+             </div>
+            
+             <div id="ingr">
+             <h3>Pick the good ingredients</h3>
+             <ul  class="list">
+             </ul>
+             <div class="button"><button>SUBMIT</button></div>
+            <h4 class="result"></h4>
+            </div>
+ </div> -->
+ 
 
- <table>Liste des ingrédients</table>
+ <section class="header">
+        <div><header>Cooking Lab</header></div>
+       </section>
+   
+<div class="scenes">
+    <section class="instructions">
+        <h1>Test your cooking knowledge</h1>
+        <img class = "snoopy" src=".//images/snoopy.webp" alt="snoopy">
+        <h2>For each plate select all the ingredients needed!</h2>
+        <button class="button1">START</button>
+    </section>
 
-
-
-
+    <!-- <section class="game">
+           <div id="plat">
+                   <h3></h3>
+                   <div class="button2"></div>
+                </div>
+    </section> -->
     
-    <script src="recettes.js"></script>
-    <script src="recettes.css"></script>
+</div>
+<div id="results"></div>
 </body>
 </html>
