@@ -146,10 +146,6 @@ function levels() {
   return true;
 }}
 
-// document.querySelector(".button2").onclick = function music() {
-//   var audioElement = new Audio('/Users/marie/Music/iTunes/iTunes Media/Music/Jacques Balutin _ Bernard Lavalette _ Yves Prin/Astrix au cinma (Bande originale des films)/Astrix et Clopatre_ Le gteau empoisonn.mp3');
-//   audioElement.play();
-// };
 
 function displayPlate(plate) {
   console.log("displayPlate");
@@ -159,7 +155,7 @@ function displayPlate(plate) {
  <h3>Pick the ${plate.response.length} good ingredients to make a great recipe!</h3>
  <ul  class="list">
  </ul>
- <button class="button2">SUBMIT<audio src="/images/Astrix et Clopatre_ Le gteau empoisonn.m4a"></audio></button>
+ <button class="button2">SUBMIT<audio src="/images/Astrix et Clopatre_ Le gteau empoisonn.mp3"></audio></button>
 <h4 class="result"></h4>
 </div>
 </div>`;
