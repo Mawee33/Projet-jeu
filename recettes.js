@@ -1,4 +1,4 @@
-var plates = [
+var plates = [ // variable avec l'ensemble des plats et leurs propriétés (titre/image/liste d'ingrédients aléatoires associé/liste des bonnes réponses)
   {
     title: "Apple Pie",
     picture: "./images/apple-pie.jpg",
@@ -132,11 +132,11 @@ var plates = [
     ]
   }
 ];
-let level = 0;
-let button2 = {};
-let points = 0;
+let level = 0; // point de départ des tours
+let button2 = {}; // 
+let points = 0; // point de départ du comptage des points
 
-function levels() {
+function levels() { // Permet d'afficher les différentes interfaces en fonction des niveaux (chaque plat avec sa liste d'ingrédients aléatoires/la sélection des vignettes et le score final)
   if (level === plates.length) {
     return  displayFinal(plates);
   } else {
@@ -147,7 +147,7 @@ function levels() {
 }}
 
 
-function displayPlate(plate) {
+function displayPlate(plate) { // Permet d'afficher dans HTML à la place des instructions le contenu d'un tour en cliquant sur "START"
   console.log("displayPlate");
   const game = document.querySelector(".scenes");
   game.innerHTML = "";
@@ -155,13 +155,12 @@ function displayPlate(plate) {
  <h3>Pick the ${plate.response.length} good ingredients to make a great recipe!</h3>
  <ul  class="list">
  </ul>
- <button class="button2">SUBMIT<audio src="/images/Astrix et Clopatre_ Le gteau empoisonn.mp3"></audio></button>
+ <button class="button2">SUBMIT<audio src="./images/Astrix et Clopatre_ Le gteau empoisonn.mp3"></audio></button>
 <h4 class="result"></h4>
 </div>
 </div>`;
   const btn2 = document.querySelector(".button2");
   btn2.onclick = function() {
-    //levels();
     displayResult(plates[level].response);
     var player = document.querySelector('audio');
   player.play();
@@ -169,7 +168,7 @@ function displayPlate(plate) {
 }
 
 
-function displayTable(ingredientsArray) {
+function displayTable(ingredientsArray) { // Permet d'intégrer la liste des ingrédients liés à un plat avec son nom et son image dans le HTML
   console.log("displayTable");
   const listIngredients = document.querySelector("#ingr .list");
   listIngredients.innerHTML = "";
@@ -178,11 +177,11 @@ function displayTable(ingredientsArray) {
   });
 }
 
-document.querySelector(".button1").onclick = function() {
+document.querySelector(".button1").onclick = function() { // Permet de commencer avec le premier tour en cliquant sur le bouton "start"
   levels();
 };
 
-function setIngredientsListener() {
+function setIngredientsListener() { // Permet d'activer la classe "active" quand on sélectionne un ingrédient
   console.log("setIngredients");
   document.querySelectorAll(".ingredient").forEach(ingredient => {
     ingredient.onclick = function(e) {
@@ -193,7 +192,7 @@ function setIngredientsListener() {
 }
 
 
-function checkAnswer(responses) {
+function checkAnswer(responses) { // Permet d'afficher le résultat d'un tour
   console.log("checkAnswer");
   let errors = 0;
   let activeIngredients = document.querySelectorAll(".ingredient.active");
@@ -213,7 +212,7 @@ function checkAnswer(responses) {
 }
 
 
-function numberOfPoints(responses) {
+function numberOfPoints(responses) { // Permet de comptabiliser le résultat des tours en fonction des réponses
   let errors = 0;
   let activeIngredients = document.querySelectorAll(".ingredient.active");
   activeIngredients.forEach(answer => {
@@ -233,19 +232,19 @@ function numberOfPoints(responses) {
 }
 
 
-function displayResult(plate) {
+function displayResult(plate) { // Permet d'intégrer le résultat de chaque tour au HTML
   const resultsDOM = document.getElementById("results");
   resultsDOM.innerHTML = "";
   resultsDOM.innerHTML += `<h4 class="result">${checkAnswer(plate)} You have ${numberOfPoints(plate)} points.</h4>`;
 
-  setTimeout(() =>{
+  setTimeout(() =>{ // Permet de limiter dans le temps l'affichage du résultat de chaque tour
  const resultsDOM = document.getElementById("results");
   resultsDOM.innerHTML = "";
   levels();
   } ,2000)
 }
 
-function displayFinal(plate) {
+function displayFinal(plate) { // Permet de basculer à la fin des tours vers l'affichage du résultat final dans le HTML ainsi que des liens vers les recettes
   const resultsDOM2 = document.querySelector(".scenes");
   resultsDOM2.innerHTML = "";
   resultsDOM2.innerHTML += `<h2 class="final">Your final result : ${numberOfPoints(plate)}/5</h2><div class="gifFinal"></div>
@@ -259,6 +258,6 @@ function displayFinal(plate) {
   };
 
 
-document.querySelector(".button2").onclick = function() {
+document.querySelector(".button2").onclick = function() { // Permet de relier l'affichage du résultat final au bouton "SUBMIT"
   displayFinal(plate);
 };
